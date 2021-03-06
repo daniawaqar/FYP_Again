@@ -571,9 +571,9 @@ class AudioProcessor(object):
           self.time_shift_offset_placeholder_: time_shift_offset,
       }
       # Choose a section of background noise to mix in.
-      if use_background or sample['label'] == SILENCE_LABEL:
-        background_index = np.random.randint(len(self.background_data), high=7) # Edited HERE
-        background_samples = self.background_data[background_index]
+      #if use_background or sample['label'] == SILENCE_LABEL:
+      # background_index = np.random.randint(len(self.background_data), high=7) # Edited HERE
+       """ background_samples = self.background_data[background_index]
         if len(background_samples) <= model_settings['desired_samples']:
           raise ValueError(
               'Background sample is too short! Need more than %d'
@@ -599,7 +599,7 @@ class AudioProcessor(object):
       if sample['label'] == SILENCE_LABEL:
         input_dict[self.foreground_volume_placeholder_] = 0
       else:
-        input_dict[self.foreground_volume_placeholder_] = 1
+        input_dict[self.foreground_volume_placeholder_] = 1 """
       # Run the graph to produce the output audio.
       summary, data_tensor = sess.run(
           [self.merged_summaries_, self.output_], feed_dict=input_dict)
