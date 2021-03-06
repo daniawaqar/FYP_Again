@@ -574,8 +574,8 @@ class AudioProcessor(object):
       if use_background or sample['label'] == SILENCE_LABEL:
         background_index = np.random.randint(len(self.background_data), high=7) # Edited HERE
         background_samples = self.background_data[background_index]
-          if len(background_samples) <= model_settings['desired_samples']:
-            raise ValueError(
+        if len(background_samples) <= model_settings['desired_samples']:
+          raise ValueError(
               'Background sample is too short! Need more than %d'
               ' samples but only %d were found' %
               (model_settings['desired_samples'], len(background_samples)))
