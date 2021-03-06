@@ -573,34 +573,33 @@ class AudioProcessor(object):
       # Choose a section of background noise to mix in.
       #if use_background or sample['label'] == SILENCE_LABEL:
       # background_index = np.random.randint(len(self.background_data), high=7) # Edited HERE
-       """background_samples = self.background_data[background_index]
-        if len(background_samples) <= model_settings['desired_samples']:
-          raise ValueError(
-              'Background sample is too short! Need more than %d'
-              ' samples but only %d were found' %
-              (model_settings['desired_samples'], len(background_samples)))
-        background_offset = np.random.randint(
-            0, len(background_samples) - model_settings['desired_samples'])
-        background_clipped = background_samples[background_offset:(
-            background_offset + desired_samples)]
-        background_reshaped = background_clipped.reshape([desired_samples, 1])
-        if sample['label'] == SILENCE_LABEL:
-          background_volume = np.random.uniform(0, 1)
-        elif np.random.uniform(0, 1) < background_frequency:
-          background_volume = np.random.uniform(0, background_volume_range)
-        else:
-          background_volume = 0
-      else:
-        background_reshaped = np.zeros([desired_samples, 1])
-        background_volume = 0
-      input_dict[self.background_data_placeholder_] = background_reshaped
-      input_dict[self.background_volume_placeholder_] = background_volume
+      # background_samples = self.background_data[background_index]
+      #  if len(background_samples) <= model_settings['desired_samples']:
+      #    raise ValueError(
+       #       'Background sample is too short! Need more than %d'
+        #      ' samples but only %d were found' %
+       #       (model_settings['desired_samples'], len(background_samples)))
+       # background_offset = np.random.randint(
+        #    0, len(background_samples) - model_settings['desired_samples'])
+       # background_clipped = background_samples[background_offset:(
+       #     background_offset + desired_samples)]
+       # background_reshaped = background_clipped.reshape([desired_samples, 1])
+       # if sample['label'] == SILENCE_LABEL:
+       #   background_volume = np.random.uniform(0, 1)
+       # elif np.random.uniform(0, 1) < background_frequency:
+       #   background_volume = np.random.uniform(0, background_volume_range)
+       # else:
+        #  background_volume = 0
+     # else:
+      #  background_reshaped = np.zeros([desired_samples, 1])
+      #  background_volume = 0
+      #input_dict[self.background_data_placeholder_] = background_reshaped
+      #input_dict[self.background_volume_placeholder_] = background_volume
       # If we want silence, mute out the main sample but leave the background.
-      if sample['label'] == SILENCE_LABEL:
-        input_dict[self.foreground_volume_placeholder_] = 0
-      else:
-        input_dict[self.foreground_volume_placeholder_] = 1 
-        """
+      #if sample['label'] == SILENCE_LABEL:
+       # input_dict[self.foreground_volume_placeholder_] = 0
+      #else:
+       # input_dict[self.foreground_volume_placeholder_] = 1 
       # Run the graph to produce the output audio.
       summary, data_tensor = sess.run(
           [self.merged_summaries_, self.output_], feed_dict=input_dict)
