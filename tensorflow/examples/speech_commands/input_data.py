@@ -595,7 +595,7 @@ class AudioProcessor(object):
         background_volume = 0
       input_dict[self.background_data_placeholder_] = background_reshaped
       input_dict[self.background_volume_placeholder_] = background_volume
-       If we want silence, mute out the main sample but leave the background.
+      #If we want silence, mute out the main sample but leave the background.
       if sample['label'] == SILENCE_LABEL:
         input_dict[self.foreground_volume_placeholder_] = 0
       else:
