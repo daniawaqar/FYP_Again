@@ -572,7 +572,7 @@ class AudioProcessor(object):
       }
       # Choose a section of background noise to mix in.
       if use_background or sample['label'] == SILENCE_LABEL:
-        background_index = np.random.randint(len(self.background_data)) # Edited HERE
+        background_index = np.random.randint(18) # Edited HERE
         background_samples = self.background_data[background_index]
         if len(background_samples) <= model_settings['desired_samples']:
           raise ValueError(
